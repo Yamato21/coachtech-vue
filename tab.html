@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+  <div id="tab">
+    <ul class="tab-menu">
+  <li class="tab-menu__item" v-on:click="change('1')" v-bind:class="{'active': isActive === '1'}">タブ1</li>
+      <li class="tab-menu__item" v-on:click="change('2')" v-bind:class="{'active': isActive === '2'}">タブ2</li>
+      <li class="tab-menu__item" v-on:click="change('3')" v-bind:class="{'active': isActive === '3'}">タブ3</li>
+    </ul>
+    <ul class="tab-content">
+      <li class="tab-content__item show" v-if="isActive === '1'">コンテンツ1</li>
+      <li class="tab-content__item" v-else-if="isActive === '2'">コンテンツ2</li>
+      <li class="tab-content__item" v-else-if="isActive === '3'">コンテンツ3</li>
+    </ul>
+  </div>
+  <script>
+    new Vue({
+     el: '#tab',
+        data: {
+        isActive: '1'
+      },
+      methods: {
+        change: function(num) {
+          this.isActive = num
+        }
+      }
+})
+  </script>
+</body>
+</html>
